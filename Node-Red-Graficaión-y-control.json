@@ -1,0 +1,325 @@
+[
+    {
+        "id": "e0b148e704501213",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0b7ccba55f97a494",
+        "type": "mqtt in",
+        "z": "e0b148e704501213",
+        "name": "",
+        "topic": "codigoIoT/ejemplo/mqtt",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "a063a623351f88f4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "1a83e3dfeb99f0dd"
+            ]
+        ]
+    },
+    {
+        "id": "a8ea0a066f34297b",
+        "type": "mqtt out",
+        "z": "e0b148e704501213",
+        "name": "",
+        "topic": "codigoIoT/ejemplo/mqttin",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a063a623351f88f4",
+        "x": 930,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3ef6d024fcf7ad59",
+        "type": "function",
+        "z": "e0b148e704501213",
+        "name": "Temperatura",
+        "func": "msg.payload = msg.payload.temp;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 120,
+        "wires": [
+            [
+                "625477e1a2eea46d",
+                "bbb4513c0d5af03d"
+            ]
+        ]
+    },
+    {
+        "id": "1a83e3dfeb99f0dd",
+        "type": "json",
+        "z": "e0b148e704501213",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "3ef6d024fcf7ad59",
+                "029e3fd44bf4cf31",
+                "20c39d8a652bb624"
+            ]
+        ]
+    },
+    {
+        "id": "625477e1a2eea46d",
+        "type": "ui_gauge",
+        "z": "e0b148e704501213",
+        "name": "",
+        "group": "f8be81c57e27c5c1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "35",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "25",
+        "className": "",
+        "x": 910,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "dfc6ad5ffcedb255",
+        "type": "ui_gauge",
+        "z": "e0b148e704501213",
+        "name": "",
+        "group": "f8be81c57e27c5c1",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humedad relativa",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#73d216",
+            "#0094ce"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 930,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "029e3fd44bf4cf31",
+        "type": "function",
+        "z": "e0b148e704501213",
+        "name": "Humedad",
+        "func": "msg.payload = msg.payload.hum;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 240,
+        "wires": [
+            [
+                "dfc6ad5ffcedb255",
+                "df2fed507e1322bd"
+            ]
+        ]
+    },
+    {
+        "id": "bbb4513c0d5af03d",
+        "type": "ui_chart",
+        "z": "e0b148e704501213",
+        "name": "",
+        "group": "f4e702beb3672006",
+        "order": 1,
+        "width": 20,
+        "height": 9,
+        "label": "Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 910,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df2fed507e1322bd",
+        "type": "ui_chart",
+        "z": "e0b148e704501213",
+        "name": "",
+        "group": "f4e702beb3672006",
+        "order": 2,
+        "width": 20,
+        "height": 9,
+        "label": "Humedad relativa",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20c39d8a652bb624",
+        "type": "function",
+        "z": "e0b148e704501213",
+        "name": "Aire acondicionado",
+        "func": "temp = msg.payload.temp;\n\nif(temp > 25){\n    msg.payload = \"true\";\n}\nelse{\n    msg.payload = \"false\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 360,
+        "wires": [
+            [
+                "a8ea0a066f34297b"
+            ]
+        ]
+    },
+    {
+        "id": "a063a623351f88f4",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f8be81c57e27c5c1",
+        "type": "ui_group",
+        "name": "Gauges",
+        "tab": "cebb3f53d288520d",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f4e702beb3672006",
+        "type": "ui_group",
+        "name": "Graficas",
+        "tab": "cebb3f53d288520d",
+        "order": 2,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cebb3f53d288520d",
+        "type": "ui_tab",
+        "name": "Monitoreo de temperatura y Humedad",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]
