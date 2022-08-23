@@ -48,7 +48,7 @@ DHT dht(DHTPIN, DHTTYPE); // Este obejto inicializa el sensor
 int flashLedPin = 4;  // Para indicar el estatus de conexión
 int statusLedPin = 33; // Para ser controlado por MQTT
 long timeNow, timeLast; // Variables de control de tiempo no bloqueante
-int wait = 2500;  // Indica la espera cada 5 segundos para envío de mensajes MQTT
+int wait = 5000;  // Indica la espera cada 5 segundos para envío de mensajes MQTT
 float temperatura, humedadRelativa; //Para guardar los valores de las mediciones del sensor
 
 // Inicialización del programa
@@ -181,7 +181,7 @@ void lecturayPublicacion(){
   humedadRelativa = dht.readHumidity();
 
   //Se construye el string correspondiente al JSON que contiene 3 variables
-  String json = "{\"id\":\"Hugo\",\"temp\":"+String(temperatura)+",\"hum\":"+String(humedadRelativa)+"}";
+  String json = "{\"id\":\"Lalo\",\"temp\":"+String(temperatura)+",\"hum\":"+String(humedadRelativa)+"}";
   Serial.println(json); // Se imprime en monitor solo para poder visualizar que el string esta correctamente creado
   int str_len = json.length() + 1;//Se calcula la longitud del string
   char char_array[str_len];//Se crea un arreglo de caracteres de dicha longitud
